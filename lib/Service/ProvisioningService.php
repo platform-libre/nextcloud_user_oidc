@@ -10,8 +10,6 @@ use OCP\IGroupManager;
 use OCP\ILogger;
 use OCP\IUser;
 use OCP\IUserManager;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use OCP\User\Events\UserChangedEvent;
 
 class ProvisioningService {

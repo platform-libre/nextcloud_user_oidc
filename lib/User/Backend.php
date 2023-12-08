@@ -268,7 +268,7 @@ class Backend extends ABackend implements IPasswordConfirmationBackend, IGetDisp
 								$this->ldapService->syncUser($tokenUserId);
 							}
 							$userFromOtherBackend = $this->userManager->get($tokenUserId);
-							if ($this->ldapService->isLdapDeletedUser($userFromOtherBackend)) {
+							if ($userFromOtherBackend !== null && $this->ldapService->isLdapDeletedUser($userFromOtherBackend)) {
 								$userFromOtherBackend = null;
 							}
 
@@ -314,7 +314,7 @@ class Backend extends ABackend implements IPasswordConfirmationBackend, IGetDisp
 							}
 
 							$user = $this->userManager->get($tokenUserId);
-							if ($this->ldapService->isLdapDeletedUser($user)) {
+							if ($user === null || $this->ldapService->isLdapDeletedUser($user)) {
 								return '';
 							}
 							$this->checkFirstLogin($tokenUserId);
